@@ -14,10 +14,13 @@ end
 fun energi-to-number(str :: String) -> Number:
   cases(Option) string-to-number(str):
     | some(a) => a
-    | none => 63
+    | none => 0
   end
 where: 
-  energi-to-number("") is 63
+  energi-to-number("") is 0
   energi-to-number("48") is 48
+  energi-to-number("37") is 37
 end
+
+transform-column(consumer-data, "energi", energi-to-number)
 consumer-data
