@@ -14,18 +14,18 @@ end
 
 fun energi-to-number(str :: String) -> Number:
   cases(Option) string-to-number(str):
-  | some(a) => a
+    | some(a) => a
     | none => 0
   end
 where: 
   energi-to-number("") is 0
   energi-to-number("48") is 48
+  energi-to-number("37") is 37
 end
 
-consumer-data
 
-#final = transform-column(consumer-data, "energi", energi-to-number)
-#final
-#sum(final, "energi")
+final = transform-column(consumer-data, "energi", energi-to-number)
+final
+sum(final, "energi")
 
 #bar-chart(final, "komponent", "energi")
