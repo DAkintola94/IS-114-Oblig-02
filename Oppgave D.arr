@@ -23,9 +23,16 @@ where:
   energi-to-number("37") is 37
 end
 
-
+fun add-car(value :: Number) -> Number:
+  if value == 0: 50 else: value 
+  end 
+end 
+  
 final = transform-column(consumer-data, "energi", energi-to-number)
-final
-sum(final, "energi")
+semi = transform-column(final, "energi", add-car)
+semi
+
+sum(semi, "energi") #summen totalt, sammen med den nye verdien som er lagt inn på "bil". 
+
 
 #bar-chart(final, "komponent", "energi")
