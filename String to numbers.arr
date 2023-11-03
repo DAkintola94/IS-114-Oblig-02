@@ -21,11 +21,3 @@ where:
   energi-to-number("") is 0
   energi-to-number("48") is 48
 end
-
-consumer-data
-
-#final = transform-column(consumer-data, "energi", energi-to-number)
-#final
-#sum(final, "energi")
-
-#bar-chart(final, "komponent", "energi")
