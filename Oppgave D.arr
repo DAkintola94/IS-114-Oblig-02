@@ -11,20 +11,26 @@ source: load-spreadsheet(ssid).sheet-by-name("kWh", true)
     sanitize energi using string-sanitizer
 end
 
+distance-per-day = 50 
+distance-per-unit-of-fuel = 12
+energy-per-unit-of-fuel = 10
+
+energy-per-day = (distance-per-day / 
+     distance-per-unit-of-fuel) * energy-per-unit-of-fuel
 
 fun energi-to-number(str :: String) -> Number:
   cases(Option) string-to-number(str):
     | some(a) => a
-    | none => 0
+    | none => energy-per-day
   end
 where: 
-  energi-to-number("") is 0
+  energi-to-number("") is energy-per-day
   energi-to-number("48") is 48
   energi-to-number("37") is 37
 end
 
 fun add-car(value :: Number) -> Number:
-  if value == 0: 50 else: value 
+  if value == 0: energy-per-day else: value 
   end 
 end 
   
